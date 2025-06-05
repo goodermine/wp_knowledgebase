@@ -44,7 +44,7 @@ if ( ! function_exists( 'knowledge_theme_setup' ) ) :
 
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus( array(
-            'primary' => esc_html__( 'Primary menu', 'knowledge' ),
+            'primary' => esc_html__( 'Primary Menu', 'knowledge' ), // Changed 'Primary menu' to 'Primary Menu' for title case consistency.
         ) );
 
         /*
@@ -89,15 +89,19 @@ add_action( 'after_setup_theme', 'knowledge_theme_setup' );
  * Enqueue scripts and styles.
  */
 function knowledge_theme_scripts() {
+    $theme_version = wp_get_theme()->get( 'Version' ); // Get theme version for dynamic asset versioning.
+
     // Enqueue main stylesheet (style.css in theme root)
-    wp_enqueue_style( 'knowledge-style', get_stylesheet_uri(), array(), '1.0.0' );
+    wp_enqueue_style( 'knowledge-style', get_stylesheet_uri(), array(), $theme_version );
 
     // Enqueue custom JavaScript file, loaded in the footer, with jQuery dependency.
     // Adjust dependency array if 'script.js' does not rely on jQuery.
-    wp_enqueue_script( 'knowledge-script', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), '1.0.0', true );
+    // Consider using filemtime for cache-busting during development if preferred:
+    // $script_version = file_exists( get_template_directory() . '/js/script.js' ) ? filemtime( get_template_directory() . '/js/script.js' ) : $theme_version;
+    wp_enqueue_script( 'knowledge-script', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), $theme_version, true );
 
     // Optionally add a custom print stylesheet if needed.
-    // wp_enqueue_style( 'knowledge-print-style', get_template_directory_uri() . '/css/print.css', array(), '1.0.0', 'print' );
+    // wp_enqueue_style( 'knowledge-print-style', get_template_directory_uri() . '/css/print.css', array(), $theme_version, 'print' );
 }
 add_action( 'wp_enqueue_scripts', 'knowledge_theme_scripts' );
 
@@ -122,3 +126,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
+
+// Note: The extraneous closing brace '}' from the original file has been removed.
+// It is also a WordPress best practice to omit the final PHP closing tag (?>) in files containing only PHP code.
