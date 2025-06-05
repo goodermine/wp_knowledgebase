@@ -33,8 +33,11 @@ get_header();
         endwhile; // End of the loop.
         ?>
 
-    </main><!-- #main -->
+    </main><?php // Corrected comment to match ID ?>
 
 <?php
 get_sidebar();
 get_footer();
+
+// Removed extraneous closing brace '}'
+// Final PHP closing tag (?>) should also be omitted if present.

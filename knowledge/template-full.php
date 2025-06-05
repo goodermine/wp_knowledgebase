@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Visual Composer
+Template Name: Page Builder Full Width (was: Visual Composer)
 */
 ?>
 

@@ -1,4 +1,11 @@
-root { 
-    display: block;
+/* If the 'root' rule was intended for the <html> element, it would be:
+   :root { 
+       display: block; /* Note: html is already block by default */
+   }
+   Assuming it's likely not needed or a typo, it's omitted here.
+*/
+
+/* Styles for WordPress list tables when reordering is active */
+#the-list tr {
+    cursor: move;
 }
-#the-list tr {cursor: move;}

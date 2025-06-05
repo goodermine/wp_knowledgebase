@@ -10,47 +10,15 @@
 if ( ! function_exists( 'knowledge_theme_setup' ) ) :
     /**
      * Sets up theme defaults and registers support for various WordPress features.
-     *
-     * Note that this function is hooked into the after_setup_theme hook, which
-     * runs before the init hook. The init hook is too late for some features, such
-     * as indicating support for post thumbnails.
      */
     function knowledge_theme_setup() {
-        /*
-         * Make theme available for translation.
-         * Translations can be filed in the /languages/ directory.
-         * If you're building a theme based on Knowledge, use a find and replace
-         * to change 'knowledge' to the name of your theme in all the template files.
-         */
         load_theme_textdomain( 'knowledge', get_template_directory() . '/languages' );
-
-        // Add default posts and comments RSS feed links to head.
         add_theme_support( 'automatic-feed-links' );
-
-        /*
-         * Let WordPress manage the document title.
-         * By adding theme support, we declare that this theme does not use a
-         * hard-coded <title> tag in the document head, and expect WordPress to
-         * provide it for us.
-         */
         add_theme_support( 'title-tag' );
-
-        /*
-         * Enable support for Post Thumbnails on posts and pages.
-         *
-         * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-         */
         add_theme_support( 'post-thumbnails' );
-
-        // This theme uses wp_nav_menu() in one location.
         register_nav_menus( array(
-            'primary' => esc_html__( 'Primary Menu', 'knowledge' ), // Changed 'Primary menu' to 'Primary Menu' for title case consistency.
+            'primary' => esc_html__( 'Primary Menu', 'knowledge' ), // Updated for title case consistency
         ) );
-
-        /*
-         * Switch default core markup for search form, comment form, and comments
-         * to output valid HTML5.
-         */
         add_theme_support( 'html5', array(
             'search-form',
             'comment-form',
@@ -60,21 +28,11 @@ if ( ! function_exists( 'knowledge_theme_setup' ) ) :
             'style',
             'script',
         ) );
-
-        // Set up the WordPress core custom background feature.
         add_theme_support( 'custom-background', apply_filters( 'knowledge_custom_background_args', array(
             'default-color' => 'ffffff',
             'default-image' => '',
         ) ) );
-
-        // Add theme support for selective refresh for widgets.
         add_theme_support( 'customize-selective-refresh-widgets' );
-
-        /*
-         * Add support for core custom logo.
-         *
-         * @link https://codex.wordpress.org/Theme_Logo
-         */
         add_theme_support( 'custom-logo', array(
             'height'      => 250,
             'width'       => 250,
@@ -89,18 +47,15 @@ add_action( 'after_setup_theme', 'knowledge_theme_setup' );
  * Enqueue scripts and styles.
  */
 function knowledge_theme_scripts() {
-    $theme_version = wp_get_theme()->get( 'Version' ); // Get theme version for dynamic asset versioning.
+    $theme_version = wp_get_theme()->get( 'Version' ); // Get theme version for dynamic asset versioning
 
-    // Enqueue main stylesheet (style.css in theme root)
     wp_enqueue_style( 'knowledge-style', get_stylesheet_uri(), array(), $theme_version );
 
-    // Enqueue custom JavaScript file, loaded in the footer, with jQuery dependency.
-    // Adjust dependency array if 'script.js' does not rely on jQuery.
-    // Consider using filemtime for cache-busting during development if preferred:
-    // $script_version = file_exists( get_template_directory() . '/js/script.js' ) ? filemtime( get_template_directory() . '/js/script.js' ) : $theme_version;
-    wp_enqueue_script( 'knowledge-script', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), $theme_version, true );
+    // Dynamic versioning for script file.
+    $script_path = get_template_directory() . '/js/script.js';
+    $script_version = file_exists( $script_path ) ? filemtime( $script_path ) : $theme_version;
+    wp_enqueue_script( 'knowledge-script', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), $script_version, true );
 
-    // Optionally add a custom print stylesheet if needed.
     // wp_enqueue_style( 'knowledge-print-style', get_template_directory_uri() . '/css/print.css', array(), $theme_version, 'print' );
 }
 add_action( 'wp_enqueue_scripts', 'knowledge_theme_scripts' );
@@ -127,5 +82,5 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/inc/custom-header.php';
 
-// Note: The extraneous closing brace '}' from the original file has been removed.
-// It is also a WordPress best practice to omit the final PHP closing tag (?>) in files containing only PHP code.
+// Removed extraneous closing brace '}'
+// Final PHP closing tag (?>) should also be omitted if present.

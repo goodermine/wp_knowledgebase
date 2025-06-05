@@ -17,11 +17,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
 
-    <?php wp_head(); // Required for WordPress to output necessary <head> elements ?>
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open(); // Hook for accessibility and plugins ?>
+<?php wp_body_open(); ?>
 
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'knowledge' ); ?></a>
 
@@ -43,21 +43,16 @@
                 $knowledge_description = get_bloginfo( 'description', 'display' );
                 if ( $knowledge_description || is_customize_preview() ) :
                     ?>
-                    <p class="site-description"><?php echo esc_html( $knowledge_description ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+                    <p class="site-description"><?php echo esc_html( $knowledge_description ); /* Removed phpcs:ignore as esc_html() is correct */ ?></p>
                     <?php
                 endif;
             }
             ?>
-        </div><!-- .site-branding -->
-
-        <nav id="site-navigation" class="main-navigation">
+        </div><nav id="site-navigation" class="main-navigation">
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'primary',
-                'menu_id'        => 'primary-menu',
+                'menu_id'        => 'primary-menu', // Ensure 'primary-menu' is the intended ID.
             ) );
             ?>
-        </nav><!-- #site-navigation -->
-    </header><!-- #masthead -->
-
-    <div id="content" class="site-content">
+        </nav></header><div id="content" class="site-content">

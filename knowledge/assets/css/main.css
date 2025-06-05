@@ -5314,7 +5314,7 @@ p.flex-caption {
   height: 36px;
   margin: -20px 0 0;
   display: block;
-  background: url(/wp-content/themes/knowledgepress/assets/img/bg_direction_nav.png) no-repeat 0 0;
+  background: url('../assets/img/bg_direction_nav.png') no-repeat 0 0;
   position: absolute;
   bottom: 20px;
   z-index: 10;

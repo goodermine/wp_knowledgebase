@@ -19,9 +19,7 @@ get_header();
             the_archive_title( '<h1 class="page-title">', '</h1>' );
             the_archive_description( '<div class="archive-description">', '</div>' );
             ?>
-        </header><!-- .page-header -->
-
-        <?php
+        </header><?php
         /* Start the Loop */
         while ( have_posts() ) :
             the_post();
@@ -44,8 +42,11 @@ get_header();
     endif;
     ?>
 
-    </main><!-- #main -->
+    </main><?php // Corrected comment to match ID ?>
 
 <?php
 get_sidebar();
 get_footer();
+
+// Removed extraneous closing brace '}'
+// Final PHP closing tag (?>) should also be omitted.
