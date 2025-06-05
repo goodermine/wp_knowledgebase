@@ -1491,7 +1491,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 				'page_title'        => __('KnowledgePress Options', 'knowledgepress'),
 				'global_variable'   => 'redux',
 
-				'google_api_key'    => 'AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
+				'google_api_key'    => '************************',
 
 				'admin_bar'         => true,
 				'dev_mode'          => false,
