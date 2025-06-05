@@ -1,6 +1,0 @@
-[23-Aug-2018 20:22:33 UTC] WordPress database error Unknown column 'wp_' in 'field list' for query SELECT wp_
-[23-Aug-2018 20:24:13 UTC] PHP Fatal error:  Call to undefined function wp_privacy_anonymize_ip() in /home/notifydot/public_html/wpbundle/support/wp-admin/includes/class-wp-community-events.php on line 267
-[23-Aug-2018 20:26:27 UTC] PHP Warning:  sprintf(): Too few arguments in /home/notifydot/public_html/wpbundle/support/wp-admin/includes/class-bulk-upgrader-skin.php on line 150
-[23-Aug-2018 20:26:27 UTC] PHP Warning:  sprintf(): Too few arguments in /home/notifydot/public_html/wpbundle/support/wp-admin/includes/class-bulk-upgrader-skin.php on line 150
-[23-Aug-2018 20:27:08 UTC] PHP Warning:  sprintf(): Too few arguments in /home/notifydot/public_html/wpbundle/support/wp-admin/includes/class-bulk-upgrader-skin.php on line 150
-[23-Aug-2018 20:27:09 UTC] PHP Warning:  sprintf(): Too few arguments in /home/notifydot/public_html/wpbundle/support/wp-admin/includes/class-bulk-upgrader-skin.php on line 150
